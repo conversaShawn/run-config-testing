@@ -23,8 +23,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "e2e": "npx cypress run --e2e --record",
-    "component": "npx cypress run --component --record 'single,component'",
+    "component": "npx cypress run --component --record --tag 'single,component'",
     "component:parallel": "npx cypress run-ct --record --parallel --tag 'parallel,component'"
   },
   "eslintConfig": {
