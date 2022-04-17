@@ -2,11 +2,10 @@ name: CT & e2e Tests
 # run workflow on git push and git pull
 on: [push, pull_request]
 jobs:
-  cypress-run:
+  component-run:
     # OS
     runs-on: ubuntu-latest
     steps:
-      
       - name: Checkout
         # checks-out your repository so your workflow can access it
         uses: actions/checkout@v2
@@ -31,6 +30,11 @@ jobs:
           #This will allow Cypress bot to show in addition to status checks
           COMMIT_INFO_SHA: ${{ github.event.pull_request.head.sha }}
 
+jobs:
+  e2e-run:
+    # OS
+    runs-on: ubuntu-latest
+    steps:
       - name: Checkout
         # checks-out your repository so your workflow can access it
         uses: actions/checkout@v2
