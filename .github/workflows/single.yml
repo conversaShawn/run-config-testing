@@ -15,17 +15,17 @@ jobs:
         with:
           # just perform install
           runTests: false
-      # Install NPM dependencies, cache them correctly and run all Cypress tests
+      # # Install NPM dependencies, cache them correctly and run all Cypress tests
       - name: Run e2e tests
         uses: cypress-io/github-action@v2
-        if: ${{ github.ref_name != 'e2e' }}
+        if: ${{ github.ref_name == 'e2e' }}
         with:
           # installed in previous workflow
           install: false
           # required even if Cypress is at root
           # relative to root if not using working-directory
           config-file: cypress.config.js
-          command: npx cypress run --e2e
+          command: npm run e2e
           record: true
           tag: single, e2e
           browser: chrome
@@ -49,7 +49,7 @@ jobs:
         with:
           install: false
           config-file: cypress.config.js
-          command: npx cypress run --component
+          command: npm run component
           record: true
           tag: single, component
           browser: chrome
