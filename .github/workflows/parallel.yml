@@ -20,8 +20,9 @@ jobs:
         # GitHub Action for running Cypress end-to-end tests
         uses: cypress-io/github-action@v3
         with:
-          # when using custom cypress run command, options must be passed manually via command or script
-          command: npm run component:parallel
+          record: true
+          parallel: true
+          tag: parallel, e2e
           # config option option required when using Cypress v10+ or cypress-io/github-action@v3+
           config-file: cypress.config.js
         env:
