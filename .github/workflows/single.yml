@@ -1,4 +1,4 @@
-name: Timeouts
+name: Component Testing
 # run workflow on git push and git pull
 on: [push, pull_request]
 jobs:
