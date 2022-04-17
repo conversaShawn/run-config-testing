@@ -1,0 +1,67 @@
+name: Timeouts
+# run workflow on git push and git pull
+on: [push, pull_request]
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        # checks-out your repository so your workflow can access it
+        uses: actions/checkout@v2
+      # Install NPM dependencies, cache them correctly and run all Cypress tests
+      - name: Cypress run
+        # GitHub Action for running Cypress end-to-end tests
+        uses: cypress-io/github-action@v3
+         with:
+          # just perform install
+          runTests: false
+      # Install NPM dependencies, cache them correctly and run all Cypress tests
+      - name: Run e2e tests
+        uses: cypress-io/github-action@v3
+        if: ${{ github.ref_name != 'e2e' }}
+        with:
+          # installed in previous workflow
+          install: false
+          # required even if Cypress is at root
+          # relative to root if not using working-directory
+          config-file: cypress.config.js
+          command: npx cypress run --e2e
+          record: true
+          tag: single, e2e
+          browser: chrome
+        env:
+          # pass the Dashboard record key as an environment variable
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          # pass the Dashboard project id as an environment variable
+          CYPRESS_PROJECT_ID:  ${{ secrets.CYPRESS_PROJECT_ID }}
+          # Recommended: pass the GitHub token lets this action correctly determine the unique run id necessary to re-run the checks (generates dynamically)
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # - if the event is push, the title will be undefined and Cypress will get the commit message from Git information
+          # - if the event is pull_request, then we set the commit message to the pull request title
+          COMMIT_INFO_MESSAGE: ${{ github.event.pull_request.title }}
+          # allow status checks to remain when getting commit info message
+          COMMIT_INFO_SHA: ${{ github.event.pull_request.head.sha }}
+     
+      # Same as above with other config based on conditional
+      - name: Run component tests
+        uses: cypress-io/github-action@v3
+        if: ${{ github.ref_name == 'component' }}
+        with:
+          install: false
+          config-file: cypress.config.js
+          command: npx cypress run --component
+          record: true
+          tag: single, component
+          browser: chrome
+        env:
+          # pass the Dashboard record key as an environment variable
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          # pass the Dashboard project id as an environment variable
+          CYPRESS_PROJECT_ID:  ${{ secrets.CYPRESS_PROJECT_ID }}
+          # Recommended: pass the GitHub token lets this action correctly determine the unique run id necessary to re-run the checks (generates dynamically)
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # - if the event is push, the title will be undefined and Cypress will get the commit message from Git information
+          # - if the event is pull_request, then we set the commit message to the pull request title
+          COMMIT_INFO_MESSAGE: ${{ github.event.pull_request.title }}
+          # allow status checks to remain when getting commit info message
+          COMMIT_INFO_SHA: ${{ github.event.pull_request.head.sha }}
