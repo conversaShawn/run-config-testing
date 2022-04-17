@@ -1,4 +1,4 @@
-name: Component Testing
+name: CT & e2e Tests
 # run workflow on git push and git pull
 on: [push, pull_request]
 jobs:
@@ -13,16 +13,16 @@ jobs:
         # run 3 copies of the current job in parallel
         containers: [1, 2, 3]
     steps:
+      
       - name: Checkout code
         # checks-out your repository so your workflow can access it
         uses: actions/checkout@v2
-      - name: Run E2E tests
+      - name: Run Component tests
         # GitHub Action for running Cypress end-to-end tests
         uses: cypress-io/github-action@v3
         with:
-          record: true
-          parallel: true
-          tag: parallel, e2e
+          # when using custom cypress run command, options must be passed manually via command or script
+          command: npm run component:parallel
           # config option option required when using Cypress v10+ or cypress-io/github-action@v3+
           config-file: cypress.config.js
         env:
@@ -37,20 +37,20 @@ jobs:
           COMMIT_INFO_MESSAGE: ${{ github.event.pull_request.title }}
           #This will allow Cypress bot to show in addition to status checks
           COMMIT_INFO_SHA: ${{ github.event.pull_request.head.sha }}
-      
+
       - name: Checkout code
         # checks-out your repository so your workflow can access it
         uses: actions/checkout@v2
-      - name: Run Component tests
+      - name: Run E2E tests
         # GitHub Action for running Cypress end-to-end tests
         uses: cypress-io/github-action@v3
         with:
-          # we have already installed everything
-          install: false
-          # when using custom cypress run command, options must be passed manually via command or script
-          command: npm run component:parallel
+          record: true
+          parallel: true
+          tag: parallel, e2e
           # config option option required when using Cypress v10+ or cypress-io/github-action@v3+
           config-file: cypress.config.js
+          browser: chrome
         env:
           # pass the Dashboard record key as an environment variable
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
