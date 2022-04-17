@@ -13,17 +13,14 @@ jobs:
         # run 3 copies of the current job in parallel
         containers: [1, 2, 3]
     steps:
-      - name: Checkout
+      - name: Checkout code
         # checks-out your repository so your workflow can access it
         uses: actions/checkout@v2
-      - name: Install dependencies
+      - name: Run Tests
         # GitHub Action for running Cypress end-to-end tests
         uses: cypress-io/github-action@v3
         with:
-          record: true
-          parallel: true
-          command: npx cypress run-ct
-          tag: parallel, component
+          command: npx cypress run-ct --record --parallel --tag "parallel,component"
           config-file: cypress.config.js
         env:
           # pass the Dashboard record key as an environment variable

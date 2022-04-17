@@ -13,9 +13,7 @@ jobs:
         # GitHub Action for running Cypress end-to-end tests
         uses: cypress-io/github-action@v3
         with:
-          record: true
-          command: npx cypress run-ct
-          tag: single, component
+          command: npx cypress run-ct --record --tag "single,component"
           config-file: cypress.config.js
         env:
           # pass the Dashboard record key as an environment variable
