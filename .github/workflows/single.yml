@@ -11,13 +11,13 @@ jobs:
       # Install NPM dependencies, cache them correctly and run all Cypress tests
       - name: Cypress run
         # GitHub Action for running Cypress end-to-end tests
-        uses: cypress-io/github-action@v3
-         with:
+        uses: cypress-io/github-action@v2
+        with:
           # just perform install
           runTests: false
       # Install NPM dependencies, cache them correctly and run all Cypress tests
       - name: Run e2e tests
-        uses: cypress-io/github-action@v3
+        uses: cypress-io/github-action@v2
         if: ${{ github.ref_name != 'e2e' }}
         with:
           # installed in previous workflow
@@ -44,7 +44,7 @@ jobs:
      
       # Same as above with other config based on conditional
       - name: Run component tests
-        uses: cypress-io/github-action@v3
+        uses: cypress-io/github-action@v2
         if: ${{ github.ref_name == 'component' }}
         with:
           install: false
