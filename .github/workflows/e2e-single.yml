@@ -1,0 +1,32 @@
+name: e2e Tests
+# run workflow on git push and git pull
+on: [push, pull_request]
+jobs:
+  e2e-run:
+    # OS
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        # checks-out your repository so your workflow can access it
+        uses: actions/checkout@v2
+      - name: Run E2E tests
+        # GitHub Action for running Cypress end-to-end tests
+        uses: cypress-io/github-action@v3
+        with:
+          record: true
+          tag: single, e2e
+          # config option option required when using Cypress v10+ or cypress-io/github-action@v3+
+          config-file: cypress.config.js
+          browser: chrome
+        env:
+          # pass the Dashboard record key as an environment variable
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          # pass the Dashboard project id as an environment variable
+          CYPRESS_PROJECT_ID:  ${{ secrets.CYPRESS_PROJECT_ID }}
+          # pass GitHub token to allow accurately detecting a build vs a re-run build
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # - if the event is push, the title will be undefined and Cypress will get the commit message from Git information
+          # - if the event is pull_request, then we set the commit message to the pull request title
+          COMMIT_INFO_MESSAGE: ${{ github.event.pull_request.title }}
+          #This will allow Cypress bot to show in addition to status checks
+          COMMIT_INFO_SHA: ${{ github.event.pull_request.head.sha }}
