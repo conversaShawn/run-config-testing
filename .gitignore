@@ -5,6 +5,12 @@
 /.pnp
 .pnp.js
 
+# cypress local run specs
+cypress/fixtures/profile.json
+cypress/fixtures/users.json
+cypress/screenshots
+cypress/videos
+
 # testing
 /coverage
 
