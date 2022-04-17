@@ -14,7 +14,7 @@ jobs:
         uses: cypress-io/github-action@v3
         with:
           record: true
-          command: npm run component
+          command: npx cypress run --component
           tag: single, component
           config-file: cypress.config.js
         env:

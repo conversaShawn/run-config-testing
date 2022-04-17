@@ -22,7 +22,7 @@ jobs:
         with:
           record: true
           parallel: true
-          command: npm run component
+          command: npx cypress run --component
           tag: parallel, component
           config-file: cypress.config.js
         env:
