@@ -1,6 +1,6 @@
 import React from "react";
 import { mount } from "@cypress/react";
-import Input from "./Input.jsx";
+import Input from "../../../src/components/Input/Input.jsx";
 
 describe("<Input />", () => {
   it("renders", () => {
