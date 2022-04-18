@@ -10,10 +10,8 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
-    specPattern: "cypress/e2e/**/*.cy.js"
   },
   component: {
     devServer,
-    specPattern: "cypress/component/**/*.cy.jsx"
   },
 });
