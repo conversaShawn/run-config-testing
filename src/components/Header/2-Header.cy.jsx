@@ -146,21 +146,24 @@ describe("<Header />", () => {
     // see: https://on.cypress.io/component-testing
     mount(<Header />);
     cy.get("header").should(($header) => {
-      expect($header).to.have.css("border-color", "rgb(0, 0, 0)");
+      // expect($header).to.have.css("border-color", "rgb(0, 0, 0)");
+      expect($header).to.have.css("border-color", "rgb(1, 0, 0)");
     });
   });
   it("check border color", () => {
     // see: https://on.cypress.io/component-testing
     mount(<Header />);
     cy.get("header").should(($header) => {
-      expect($header).to.have.css("border-color", "rgb(0, 0, 0)");
+      // expect($header).to.have.css("border-color", "rgb(0, 0, 0)");
+      expect($header).to.have.css("border-color", "rgb(0, 1, 0)");
     });
   });
   it("check border color", () => {
     // see: https://on.cypress.io/component-testing
     mount(<Header />);
     cy.get("header").should(($header) => {
-      expect($header).to.have.css("border-color", "rgb(0, 0, 0)");
+      // expect($header).to.have.css("border-color", "rgb(0, 0, 0)");
+      expect($header).to.have.css("border-color", "rgb(0, 0, 1)");
     });
   });
 });
