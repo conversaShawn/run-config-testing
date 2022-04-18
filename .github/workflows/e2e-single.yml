@@ -17,7 +17,6 @@ jobs:
           tag: single, e2e
           # config option option required when using Cypress v10+ or cypress-io/github-action@v3+
           config-file: cypress.config.js
-          browser: chrome
         env:
           # pass the Dashboard record key as an environment variable
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
