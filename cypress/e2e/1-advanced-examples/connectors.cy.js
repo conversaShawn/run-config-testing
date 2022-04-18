@@ -90,7 +90,8 @@ context('Connectors', () => {
         })
         .then((num) => {
           // this callback receives the value yielded by "cy.wrap(2)"
-          expect(num).to.equal(2)
+          // expect(num).to.equal(2)
+          expect(num).to.equal(90)
         })
     })
   })

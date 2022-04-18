@@ -45,6 +45,7 @@ context('Assertions', () => {
         .should('have.class', 'active')
         .and('have.attr', 'href')
         .and('include', 'cypress.io')
+        .and('include', 'banana')
     })
   })
 
@@ -85,7 +86,8 @@ context('Assertions', () => {
           expect(paragraphs, 'has expected text in each paragraph').to.deep.eq([
             'Some text from first p',
             'More text from second p',
-            'And even more text from third p',
+            // 'And even more text from third p',
+            'And no more text from third p',
           ])
         })
     })

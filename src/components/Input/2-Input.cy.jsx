@@ -26,7 +26,8 @@ describe("<Input />", () => {
     // see: https://on.cypress.io/component-testing
     mount(<Input />);
     cy.get("input").should(($input) => {
-      expect($input).to.have.css("border-color", "rgb(118, 118, 118)");
+      // expect($input).to.have.css("border-color", "rgb(118, 118, 118)");
+      expect($input).to.have.css("border-color", "rgb(0, 118, 118)");
     });
   });
 });
@@ -103,7 +104,8 @@ describe("<Input />", () => {
     // see: https://on.cypress.io/component-testing
     mount(<Input />);
     cy.get("input").should(($input) => {
-      expect($input).to.have.css("background-color", "rgba(0, 0, 0, 0)");
+      // expect($input).to.have.css("background-color", "rgba(0, 0, 0, 0)");
+      expect($input).to.have.css("background-color", "rgba(18, 0, 0, 0)");
     });
   });
   it("check border color", () => {

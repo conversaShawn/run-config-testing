@@ -447,7 +447,8 @@ describe("<Input />", () => {
     // see: https://on.cypress.io/component-testing
     mount(<Input />);
     cy.get("input").should(($input) => {
-      expect($input).to.have.css("border-color", "rgb(118, 118, 118)");
+      // expect($input).to.have.css("border-color", "rgb(118, 118, 118)");
+      expect($input).to.have.css("border-color", "rgb(0, 118, 118)");
     });
   });
 });
@@ -517,7 +518,8 @@ describe("<Input />", () => {
     // see: https://on.cypress.io/component-testing
     mount(<Input />);
     cy.get("input").should(($input) => {
-      expect($input).to.have.css("display", "block");
+      // expect($input).to.have.css("display", "block");
+      expect($input).to.have.css("display", "hidden");
     });
   });
   it("checks css background color", () => {

@@ -479,6 +479,7 @@ describe("<Button />", () => {
     // see: https://on.cypress.io/component-testing
     mount(<Button />);
     cy.get("button").should(($btn) => {
+      // expect($btn).to.have.css("border-color", "rgba(0, 3, 0, 0)");
       expect($btn).to.have.css("border-color", "rgba(0, 0, 0, 0)");
     });
   });

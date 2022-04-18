@@ -31,7 +31,8 @@ context('Files', () => {
 
     cy.wait('@getComment').its('response.body')
       .should('have.property', 'name')
-      .and('include', 'Using fixtures to represent data')
+      // .and('include', 'Using fixtures to represent data')
+      .and('include', 'Apples or Bananas')
   })
 
   it('cy.fixture() or require - load a fixture', function () {
@@ -52,7 +53,8 @@ context('Files', () => {
     // You can read a file and yield its contents
     // The filePath is relative to your project's root.
     cy.readFile('cypress.config.js').then((json) => {
-      expect(json).to.be.an('string')
+      // expect(json).to.be.an('string')
+      expect(json).to.be.an('boolean')
     })
   })
 

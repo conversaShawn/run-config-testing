@@ -16,7 +16,8 @@ context('Traversal', () => {
     // https://on.cypress.io/closest
     cy.get('.traversal-badge')
       .closest('ul')
-      .should('have.class', 'list-group')
+      // .should('have.class', 'list-group')
+      .should('have.class', 'apples')
   })
 
   it('.eq() - get a DOM element at a specific index', () => {
@@ -28,7 +29,8 @@ context('Traversal', () => {
   it('.filter() - get DOM elements that match the selector', () => {
     // https://on.cypress.io/filter
     cy.get('.traversal-nav>li')
-      .filter('.active').should('contain', 'About')
+      // .filter('.active').should('contain', 'About')
+      .filter('.active').should('contain', 'Cecelia')
   })
 
   it('.find() - get descendant DOM elements of the selector', () => {

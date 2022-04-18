@@ -31,7 +31,8 @@ context('Files', () => {
 
     cy.wait('@getComment').its('response.body')
       .should('have.property', 'name')
-      .and('include', 'Using fixtures to represent data')
+      // .and('include', 'Using fixtures to represent data')
+      .and('include', 'Wakanda Forever')
   })
 
   it('cy.fixture() or require - load a fixture', function () {
@@ -81,7 +82,8 @@ context('Files', () => {
     })
 
     cy.fixture('profile').should((profile) => {
-      expect(profile.name).to.eq('Jane')
+      // expect(profile.name).to.eq('Jane')
+      expect(profile.name).to.eq('John')
     })
   })
 })

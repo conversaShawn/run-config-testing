@@ -99,6 +99,7 @@ context('Misc', () => {
     // https://on.cypress.io/wrap
     cy.wrap({ foo: 'bar' })
       .should('have.property', 'foo')
-      .and('include', 'bar')
+      // .and('include', 'bar')
+      .and('include', 'no_bar')
   })
 })
