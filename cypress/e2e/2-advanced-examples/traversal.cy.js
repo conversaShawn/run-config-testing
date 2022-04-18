@@ -9,8 +9,7 @@ context('Traversal', () => {
     // https://on.cypress.io/children
     cy.get('.traversal-breadcrumb')
       .children('.active')
-      // .should('contain', 'Data')
-      .should('contain', 'banana')
+      .should('contain', 'Data')
   })
 
   it('.closest() - get closest ancestor DOM element', () => {

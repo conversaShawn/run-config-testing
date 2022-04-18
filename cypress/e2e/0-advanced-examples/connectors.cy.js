@@ -29,7 +29,8 @@ context('Connectors', () => {
     cy.get('.connectors-div').should('be.hidden')
       // call the jquery method 'show' on the 'div.container'
       .invoke('show')
-      .should('be.visible')
+      // .should('be.visible')
+      .should('not.be.visible')
   })
 
   it('.spread() - spread an array as individual args to callback function', () => {

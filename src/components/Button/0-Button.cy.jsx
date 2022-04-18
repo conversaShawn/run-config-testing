@@ -427,7 +427,8 @@ describe("<Button />", () => {
     // see: https://on.cypress.io/component-testing
     mount(<Button />);
     cy.get("button").should(($btn) => {
-      expect($btn).to.have.css("background-color", "rgb(112, 137, 65)");
+      // expect($btn).to.have.css("background-color", "rgb(112, 137, 65)");
+      expect($btn).to.have.css("background-color", "rgb(0, 137, 65)");
     });
   });
   it("checks default visibility", () => {
