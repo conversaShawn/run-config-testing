@@ -23,7 +23,7 @@ jobs:
           record: true
           parallel: true
           tag: parallel, e2e
-          # config option option required when using Cypress v10+ or cypress-io/github-action@v3+
+          # config option required when using Cypress v10+ or cypress-io/github-action@v3+
           config-file: cypress.config.js
         env:
           # pass the Dashboard record key as an environment variable
